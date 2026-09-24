@@ -1,0 +1,5 @@
+serversetup/main.tf
+.terraform.lock.hcl
+terraform.tfstate.backup
+terraform.tfstate
+.terraform
