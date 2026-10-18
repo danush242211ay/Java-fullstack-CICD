@@ -17,6 +17,13 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/danush242211ay/Java-fullstack-CICD.git'
+
+                sh '''
+                git fetch origin devops
+                git checkout origin/devops -- Dockerfile deployment.yml
+                '''
+
+                sh 'ls -la'
             }
         }
 
@@ -86,8 +93,8 @@ pipeline {
         stage('Verify the Deployment') {
             steps {
                 withKubeConfig(caCertificate: '', clusterName: 'java-app-cluster', contextName: '', credentialsId: 'kube', namespace: 'microdegree', restrictKubeConfigAccess: false, serverUrl: 'https://5DC0CED9029D05084DE963A8AD9BE68A.gr7.ap-south-1.eks.amazonaws.com') {
-                    sh "kubectl get pods -n microdegree"
-                    sh "kubectl get svc -n microdegree"
+                    sh "kubectl get pods -n ${NAMESPACE}"
+                    sh "kubectl get svc -n ${NAMESPACE}"
                 }
             }
         }
