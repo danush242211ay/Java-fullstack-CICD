@@ -20,7 +20,7 @@ pipeline {
 
                 sh '''
                 git fetch origin devops
-                git checkout origin/devops -- Dockerfile deployment.yml
+                git checkout origin/devops -- Dockerfile deployment.yaml
                 '''
 
                 sh 'ls -la'
