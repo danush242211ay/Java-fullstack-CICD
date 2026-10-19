@@ -33,10 +33,10 @@ spec:
           periodSeconds: 5
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "125m"
           limits:
-            memory: "512Mi"
+            memory: "128Mi"
             cpu: "1"
 ---
 apiVersion: v1
