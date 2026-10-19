@@ -75,8 +75,8 @@ pipeline {
         stage('Deploy To Kubernetes') {
             steps {
                 withKubeConfig(caCertificate: '', clusterName: 'java-app-cluster', contextName: '', credentialsId: 'kube', namespace: 'microdegree', restrictKubeConfigAccess: false, serverUrl: 'https://252F42923B030F505004AF57FD5297A3.gr7.ap-south-1.eks.amazonaws.com') {
-                    sh "sed -i 's|replace|${IMAGE_NAME}|g' deployment.yml"
-                    sh "kubectl apply -f deployment.yml -n ${NAMESPACE}"
+                    sh "sed -i 's|replace|${IMAGE_NAME}|g' deployment.yaml"
+                    sh "kubectl apply -f deployment.yaml -n ${NAMESPACE}"
                 }
             }
         }
